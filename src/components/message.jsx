@@ -1,14 +1,25 @@
 import React from 'react';
 
-const Message = ({ author, created_at, content }) => {
+function strToRGB(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+  return `#${"00000".substring(0, 6 - c.length)}${c}`;
+}
+
+const Message = ({ message }) => {
+  const { author, created_at, content } = message;
+  const time = new Date(created_at).toLocaleTimeString();
+
   return(
-    <div className='message'>
-      <div className="title">
-        <p><strong>{author}</strong> - <em>{created_at}</em></p>
-      </div>
-      <div className="content">
-        <p>{content}</p>
-      </div>
+    <div className='message-container'>
+      <i>
+        <span style={{ color: strToRGB(author) }}>{author}</span>
+        <small>{time}</small>
+      </i>
+      <p>{content}</p>
     </div>
   )
 }
