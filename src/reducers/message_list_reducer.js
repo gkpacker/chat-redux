@@ -1,15 +1,11 @@
 import { FECTH_MESSAGES } from '../actions';
-import { SEND_MESSAGE } from '../actions';
+import { CREATE_MESSAGE } from '../actions';
 
-export default function(state, action) {
-  if (state === undefined) {
-    return []
-  }
-
+export default function(state = [], action) {
   switch (action.type) {
     case FECTH_MESSAGES:
       return action.payload.messages;
-    case SEND_MESSAGE:
+    case CREATE_MESSAGE:
       let newState = state.slice(0);
       newState.push(action.payload);
 
