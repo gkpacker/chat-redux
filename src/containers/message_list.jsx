@@ -40,8 +40,8 @@ class MessageList extends Component {
         <hr/>
         <div className="channel-content">
           {this.renderList()}
-          <MessageForm />
         </div>
+        <MessageForm />
       </div>
     );
   }
