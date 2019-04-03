@@ -7,7 +7,17 @@ import MessageForm from './message_form';
 import { fetchMessages } from '../actions';
 
 class MessageList extends Component {
-  componentWillMount() {
+  componentDidMount() {
+    this.fetchMessages();
+
+    this.refresher = setInterval(this.fetchMessages, 5000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.refresher);
+  }
+
+  fetchMessages = () => {
     const { selectedChannel, fetchMessages } = this.props;
 
     fetchMessages(selectedChannel);
@@ -16,16 +26,20 @@ class MessageList extends Component {
   renderList = () => {
     const { messages } = this.props;
 
-    return messages.map(message => <Message author={message.author} key={message.created_at} created_at={message.created_at} content={message.content} />);
+    return messages.map(message => <Message message={message} key={message.created_at} />);
   }
 
   render() {
+    const { selectedChannel } = this.props;
+
     return (
-      <div className='message-list' >
-        <div className="messages">
-          {this.renderList()}
+      <div className='channel-container'>
+        <div className="channel-title">
+          <span>Channel #{selectedChannel}</span>
         </div>
-        <div className="message-form">
+        <hr/>
+        <div className="channel-content">
+          {this.renderList()}
           <MessageForm />
         </div>
       </div>
