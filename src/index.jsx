@@ -12,21 +12,21 @@ import '../assets/stylesheets/application.scss';
 
 // State and reducers
 import messageListReducer from './reducers/message_list_reducer';
-import channelListReducer from './reducers/channel_list_reducer';
 import selectedChannelReducer from './reducers/selected_channel_reducer';
-import currentUserReducer from './reducers/current_user_reducer';
+
+const identityReducer = (state = null) => state;
 
 const reducers = combineReducers({
   messages: messageListReducer,
-  channels: channelListReducer,
+  channels: identityReducer,
   selectedChannel: selectedChannelReducer,
-  currentUser: currentUserReducer
+  currentUser: identityReducer
 });
 
 const initialState = {
   messages: [],
-  channels: [ 'general', 'react', 'paris' ],
-  currentUser: prompt("What is your username?") || `anonymous${Math.floor(10 + (Math.random() * 90))}`,
+  channels: [ 'general', 'react', 'são-paulo' ],
+  currentUser: 'gkpacker', //prompt("What is your username?") || `anonymous${Math.floor(10 + (Math.random() * 90))}`,
   selectedChannel: 'general'
 };
 
