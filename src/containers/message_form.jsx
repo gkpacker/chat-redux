@@ -13,22 +13,37 @@ class MessageForm extends Component {
     };
   }
 
+  componentDidMount() {
+    this.messageBox.focus();
+  }
+
   handleChange = (event) => {
     this.setState({ value: event.target.value });
   }
 
   handleSubmit = (event) => {
+    event.preventDefault();
     const { createMessage, selectedChannel, currentUser } = this.props;
     const { value } = this.state;
 
     createMessage(selectedChannel, currentUser, value)
+
+    this.setState({ value: '' });
+    this.messageBox.focus();
   }
 
   render() {
     return (
-      <form className='form-group row'>
-        <input type="text" id='message-content' className='from-control' />
-        <input type='submit' value='Send'/>
+      <form onSubmit={this.handleSubmit} className='form-group channel-editor'>
+        <input
+          autoComplete="off"
+          type="text"
+          value={this.state.value}
+          onChange={this.handleChange}
+          className='form-control'
+          ref={input => this.messageBox = input}
+        />
+        <button type='submit'>Send</button>
       </form>
     );
   }
