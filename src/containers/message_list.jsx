@@ -7,10 +7,16 @@ import MessageForm from './message_form';
 import { fetchMessages } from '../actions';
 
 class MessageList extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.fetchMessages();
+  }
 
+  componentDidMount() {
     this.refresher = setInterval(this.fetchMessages, 5000);
+  }
+
+  componentDidUpdate() {
+    this.chat.scrollTop = this.chat.scrollHeight;
   }
 
   componentWillUnmount() {
@@ -26,7 +32,7 @@ class MessageList extends Component {
   renderList = () => {
     const { messages } = this.props;
 
-    return messages.map(message => <Message message={message} key={message.created_at} />);
+    return messages.map(message => <Message message={message} key={`${message.content}-${message.created_at}`} />);
   }
 
   render() {
@@ -37,8 +43,7 @@ class MessageList extends Component {
         <div className="channel-title">
           <span>Channel #{selectedChannel}</span>
         </div>
-        <hr/>
-        <div className="channel-content">
+        <div className="channel-content" ref={messagesContainer => this.chat = messagesContainer}>
           {this.renderList()}
         </div>
         <MessageForm />
