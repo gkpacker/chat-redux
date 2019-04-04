@@ -30,13 +30,13 @@ class ChannelList extends Component {
         >
           {channel}
         </li>
-      )
+      );
     });
   }
 
   render() {
     return (
-      <div className='channels-container'>
+      <div className="channels-container">
         <span>Redux Chat</span>
         <ul>
           {this.renderList()}
@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
   const { selectedChannel, channels } = state;
 
   return { selectedChannel, channels };
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return (
@@ -59,6 +59,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch
     )
   );
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChannelList);

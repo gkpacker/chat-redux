@@ -39,7 +39,7 @@ class MessageList extends Component {
     const { selectedChannel } = this.props;
 
     return (
-      <div className='channel-container'>
+      <div className="channel-container">
         <div className="channel-title">
           <span>Channel #{selectedChannel}</span>
         </div>

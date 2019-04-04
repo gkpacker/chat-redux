@@ -26,7 +26,7 @@ class MessageForm extends Component {
     const { createMessage, selectedChannel, currentUser } = this.props;
     const { value } = this.state;
 
-    createMessage(selectedChannel, currentUser, value)
+    createMessage(selectedChannel, currentUser, value);
 
     this.setState({ value: '' });
     this.messageBox.focus();
@@ -34,16 +34,16 @@ class MessageForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className='form-group channel-editor'>
+      <form onSubmit={this.handleSubmit} className="form-group channel-editor">
         <input
           autoComplete="off"
           type="text"
           value={this.state.value}
           onChange={this.handleChange}
-          className='form-control'
+          className="form-control"
           ref={input => this.messageBox = input}
         />
-        <button type='submit'>Send</button>
+        <button type="submit">Send</button>
       </form>
     );
   }

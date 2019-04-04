@@ -13,7 +13,7 @@ export function fetchMessages(channel) {
 }
 
 export function createMessage(channel, author, content) {
-  const body = JSON.stringify({ author, content })
+  const body = JSON.stringify({ author, content });
   const promise = fetch(
     `https://wagon-chat.herokuapp.com/${channel}/messages`,
     { method: 'POST', body }
@@ -29,5 +29,5 @@ export function selectChannel(channel) {
   return {
     type: SELECT_CHANNEL,
     payload: channel
-  }
+  };
 }

@@ -14,8 +14,8 @@ const Message = ({ message }) => {
   const { author, created_at, content } = message;
   const time = new Date(created_at).toLocaleTimeString();
 
-  return(
-    <div className='message-container'>
+  return (
+    <div className="message-container">
       <i>
         <span style={{ color: strToRGB(author) }}>{author}</span>
         <small>{time}</small>
@@ -24,7 +24,7 @@ const Message = ({ message }) => {
         <p>{content}</p>
       </Emojify>
     </div>
-  )
-}
+  );
+};
 
 export default Message;
