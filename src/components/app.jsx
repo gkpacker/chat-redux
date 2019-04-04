@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div className="app messaging-wrapper">
       <div className="logo-container">
-        <img src="assets/images/lewagon_logo.png" alt="" className="messaging-logo" />
+        <img src="assets/images/lewagon_logo.svg" alt="logo" />
       </div>
       <ChannelList />
       <MessageList />
