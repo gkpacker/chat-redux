@@ -47,5 +47,5 @@ yarn start
 
 2. Emojis
 
-3. Deploy 🎉
+3. Deploy on Github Pages 🎉 
 
