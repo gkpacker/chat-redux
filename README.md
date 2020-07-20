@@ -1,4 +1,4 @@
-# Redux Chat ![language](https://img.shields.io/badge/language-ruby-blue.svg)
+# Redux Chat ![language](https://img.shields.io/badge/language-JavaScript-yellow.svg)
 
 > A simple React + Redux app with the following config:
 
